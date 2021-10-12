@@ -1,0 +1,28 @@
+Drivers:
+
+curl -v -X POST -H "x-api-key:fs93hfs2" -d "{\"Name\":\"Bob\",\"Rate\":0.25}" localhost:5420/esr_drivers
+curl -v -X POST -H "x-api-key:57gfw3k3" -d "{\"Name\":\"Tom\",\"Rate\":0.30}" localhost:5420/esr_drivers
+
+curl -v -X PUT -H "x-api-key:57gfw3k3" -d "{\"Name\":\"Tom\",\"Rate\":0.35}" localhost:5420/esr_drivers
+
+curl -v -X GET -H "x-api-key:01g1" localhost:5420/esr_drivers
+curl -v -X GET -H "x-api-key:01g1" localhost:5420/esr_drivers/Bob
+
+curl -v -X DELETE -H "x-api-key:fs93hfs2" localhost:5420/esr_drivers/Tom - WRONG KEY
+curl -v -X DELETE -H "x-api-key:57gfw3k3" localhost:5420/esr_drivers/Tom
+
+Riders:
+
+curl -v -X GET -d "{\"Start\":\"Exeter UK\",\"End\":\"Bristol UK\"}" localhost:5421/esr_riders
+
+Directions:
+
+curl -v -X GET -d "{\"Start\":\"Exeter UK\",\"End\":\"Bristol UK\"}" localhost:5422/esr_directions
+
+
+curl -v -X POST -d "{\"Name\":\"Bob\",\"Rate\":0.25}" localhost:5420/esr_drivers
+curl -v -X POST -d "{\"Name\":\"Bob\",\"Rate\":0.25}" localhost:5420/esr_drivers/Bob
+curl -v -X POST -d "0.25" localhost:5420/esr_drivers/Bob
+
+Auth:
+curl -v -X GET -H "x-api-key:45g0" localhost:5423/esr_auth/57gfw3k3

@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  esr_auth_mod:
+    image: esr-auth-cont
+    build:
+      context: ./esr_auth
+      dockerfile: Dockerfile
+    ports:
+      - "5423:5423"
+  
+  esr_drivers_mod:
+    image: esr-drivers-cont
+    build:
+      context: ./esr_drivers
+      dockerfile: Dockerfile
+    ports:
+      - "5420:5420"
+    depends_on:
+      - esr_auth_mod
+  
+  esr_directions_mod:
+    image: esr-directions-cont
+    build:
+      context: ./esr_directions
+      dockerfile: Dockerfile
+    ports:
+      - "5422:5422"
+
+  esr_riders_mod:
+    image: esr-riders-cont
+    build:
+      context: ./esr_riders
+      dockerfile: Dockerfile
+    ports:
+      - "5421:5421"
+    depends_on:
+      - esr_drivers_mod
+      - esr_directions_mod
+    
